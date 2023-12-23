@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Laratrust\Models\Role as RoleModel;
+use Laratrust\Models\Role as ModelsRole;
 
-class Role extends RoleModel
+class Role extends ModelsRole
 {
     public $guarded = [];
 }

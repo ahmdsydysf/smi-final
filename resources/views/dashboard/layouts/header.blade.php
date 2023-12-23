@@ -134,8 +134,12 @@
                             <a class="dropdown-item"><i
                                     class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
                                 FAQ</a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button>Sign Out</button>
+                                </form>
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -328,12 +332,22 @@
             </div>
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
+
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('adminDash/index.html') }}">
+                        {{-- @dd(Request::segment(3)) --}}
+                        <a @class([ 'nav-link' , 'active'=> Request::segment(3) == null ])
+                            href="{{ route('dashboard.main') }}">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">@lang('My Dashboard')</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a @class([ 'nav-link' , 'active'=> Request::segment(3) == 'users' ])
+                            class="nav-link" href="{{ route('dashboard.users.index') }}">
+                            <i class="mdi mdi-grid-large menu-icon"></i>
+                            <span class="menu-title">Users</span>
                         </a>
                     </li>
 
